@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authService = axios.create({
-  baseURL: "http://localhost:5005/auth",
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/auth`,
 });
 
 export function signup(credentials) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const questionService = axios.create({
-  baseURL: "http://localhost:5005/question",
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/question`,
 });
 
 export function addNewQuestion(question) {
