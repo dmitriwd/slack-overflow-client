@@ -41,8 +41,9 @@ class App extends React.Component {
     console.log("accessToken:", accessToken);
     getLoggedIn(accessToken).then((response) => {
       console.log(response);
+
       this.setState({
-        user: response.data.user,
+        user: response.user,
         isLoading: false,
       });
     });
