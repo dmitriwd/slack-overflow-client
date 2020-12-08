@@ -44,7 +44,7 @@ export function login(credentials) {
 
 export function getLoggedIn(accessToken) {
   return authService
-    .get("http://localhost:5005/auth/loggedin", {
+    .get("/loggedin", {
       headers: {
         Authorization: accessToken,
       },

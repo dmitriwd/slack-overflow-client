@@ -11,7 +11,7 @@ import NewQuestion from "./pages/NewQuestion";
 import NotFound from "./pages/NotFound";
 import SingleQuestionPage from "./pages/SingleQuestionPage";
 import Signup from "./pages/Singup";
-import { logout } from "./services/authService";
+import { logout, getLoggedIn } from "./services/authService";
 
 class App extends React.Component {
   state = {
@@ -39,19 +39,13 @@ class App extends React.Component {
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken"); // 43562390567435986743 || null
     console.log("accessToken:", accessToken);
-    axios
-      .get("http://localhost:5005/auth/loggedin", {
-        headers: {
-          Authorization: accessToken,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        this.setState({
-          user: response.data.user,
-          isLoading: false,
-        });
+    getLoggedIn(accessToken).then((response) => {
+      console.log(response);
+      this.setState({
+        user: response.data.user,
+        isLoading: false,
       });
+    });
   };
 
   render() {
